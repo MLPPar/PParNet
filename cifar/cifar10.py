@@ -45,6 +45,8 @@ import tensorflow as tf
 
 import cifar10_input
 
+from eve import eve_updates
+
 FLAGS = tf.app.flags.FLAGS
 
 # Basic model parameters.
@@ -317,7 +319,7 @@ def train(total_loss, global_step):
 
   # Generate moving averages of all losses and associated summaries.
   loss_averages_op = _add_loss_summaries(total_loss)
-
+  '''
   # Compute gradients.
   with tf.control_dependencies([loss_averages_op]):
     opt = tf.train.GradientDescentOptimizer(lr)
@@ -325,23 +327,28 @@ def train(total_loss, global_step):
 
   # Apply gradients.
   apply_gradient_op = opt.apply_gradients(grads, global_step=global_step)
+  '''
+
+  apply_gradient_op = eve_updates(tf.trainable_variables(), total_loss)
 
   # Add histograms for trainable variables.
   for var in tf.trainable_variables():
     tf.summary.histogram(var.op.name, var)
 
+  '''
   # Add histograms for gradients.
   for grad, var in grads:
     if grad is not None:
       tf.summary.histogram(var.op.name + '/gradients', grad)
-
+  '''
   # Track the moving averages of all trainable variables.
   variable_averages = tf.train.ExponentialMovingAverage(
       MOVING_AVERAGE_DECAY, global_step)
   variables_averages_op = variable_averages.apply(tf.trainable_variables())
 
+
   with tf.control_dependencies([apply_gradient_op, variables_averages_op]):
-    train_op = tf.no_op(name='train')
+      train_op = tf.no_op(name='train')
 
   return train_op
 
