@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 loss_suffix = "-Val-Loss.csv"
 acc_suffix  = "-Val-Acc.csv"
 
-best_lrs = [("Adagrad","0.01"), ("Adam","0.001"), ("Eve","0.0001"), ("RMSProp","0.001"), ("SGD","0.1")]
+best_lrs = [("Adagrad","0.01"), ("Adam","0.001"), ("AMSGrad","0.001"), ("Eve","0.0001"), ("RMSProp","0.001"), ("SGD","0.1")]
 
 legend = []
 
@@ -21,6 +21,3 @@ for rule, lr in best_lrs:
 ax.legend(legend)
 
 plt.show()
-
-
-
