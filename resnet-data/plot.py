@@ -8,6 +8,8 @@ WALL = 'Wall time'
 STEP = 'Step'
 VALUE = 'Value'
 
+plt.style.use('ggplot')
+
 def learning_rates():
     return ("001", "0001", "00001")
 
