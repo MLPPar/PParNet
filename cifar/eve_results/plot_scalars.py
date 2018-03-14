@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+plt.style.use('ggplot')
+
 loss_suffix = "-Val-Loss.csv"
 acc_suffix  = "-Val-Acc.csv"
 
@@ -15,9 +17,13 @@ for rule, lr in best_lrs:
     legend.append(rule)
     loss_filename =  rule + lr + loss_suffix
     frame = pd.read_csv(loss_filename)
-
     plt.plot(frame['Step'], frame['Value'])
+
+plt.xlabel("Epoch")
+plt.ylabel("Validation Loss")
 
 ax.legend(legend)
 
 plt.show()
+
+plt.savefig('loss_plot.png')
