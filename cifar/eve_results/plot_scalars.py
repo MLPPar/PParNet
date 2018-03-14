@@ -24,6 +24,4 @@ plt.ylabel("Validation Loss")
 
 ax.legend(legend)
 
-plt.show()
-
-plt.savefig('loss_plot.png')
+fig.savefig('loss_plot.png')
