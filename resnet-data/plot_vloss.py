@@ -48,7 +48,7 @@ def plot_vloss():
     ax.legend(legends)
     ax.set_ylabel('Validation Loss')
     ax.set_xlabel('Training Step')
-    plt.savefig('resnet_loss.png')
+    plt.savefig('resnet_loss.pdf')
     
 if __name__ == "__main__":
     plot_vloss()
