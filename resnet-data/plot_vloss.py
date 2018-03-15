@@ -33,6 +33,7 @@ def best_rates():
         # "nesterov" : "001",
         "rmsprop" : "00001",
         "sgd" : "001",
+        "amsgrad" : "00001"
     }
 
 def plot_vloss():
