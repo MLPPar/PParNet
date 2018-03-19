@@ -15,7 +15,7 @@ def file_name(rule, rate=None):
     if rate is not None:
         return "{}_loss_{}.csv".format(rule, rate)
     else:
-        return "{}_vloss.csv".format(rule)
+        return "{}_decay_vloss.csv".format(rule)
 
 def rate_legend(name):
     rule = name.split('_')[0]
