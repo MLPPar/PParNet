@@ -6,7 +6,10 @@ plt.style.use('ggplot')
 loss_suffix = "-Val-Loss.csv"
 acc_suffix  = "-Val-Acc.csv"
 
-best_lrs = [("Adagrad","0.01"), ("Adam","0.001"), ("AMSGrad","0.001"), ("Eve","0.0001"), ("RMSProp","0.001"), ("SGD","0.1")]
+best_lrs = [("Adadelta","0.1"), ("Adagrad","0.01"), ("Adam","0.001"),
+            ("Adamax","0.001"), ("AMSGrad","0.001"), ("Eve","0.0001"),
+            ("RMSProp","0.001"), ("SGD","0.1"), ("SGDMomentum","0.01"),
+            ("SGDNesterovMomentum","0.01")]
 
 legend = []
 
@@ -24,4 +27,4 @@ plt.ylabel("Validation Loss")
 
 ax.legend(legend)
 
-fig.savefig('loss_plot.png')
+fig.savefig('loss_plot.pdf')
