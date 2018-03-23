@@ -28,3 +28,30 @@ plt.ylabel("Validation Loss")
 ax.legend(legend)
 
 fig.savefig('loss_plot.pdf')
+
+
+fig = plt.figure()
+ax  = fig.add_subplot(1,1,1)
+
+optimizers = ["Adam", "Eve"]
+styles    = ['-','--']
+layers = [("4-Layers","palevioletred"), ("6-Layers", "lightseagreen"),("8-Layers", "tomato")]
+
+legend = []
+
+for optim, style in zip(optimizers, styles):
+    for layer, colour in layers:
+        legend.append((optim + layer))
+        loss_filename = layer + optim + loss_suffix
+        frame = pd.read_csv(loss_filename)
+        print(loss_filename, min(frame['Value']))
+        plt.plot(frame['Step'][0::10], frame['Value'][0::10], color=colour, linestyle=style)
+
+
+
+plt.xlabel("Epoch")
+plt.ylabel("Validation Loss")
+
+ax.legend(legend)
+
+fig.savefig('deep_plot.pdf')
